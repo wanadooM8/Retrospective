@@ -1,0 +1,552 @@
+/* Styles specific to each retrospective step, in step order. */
+
+/* ---------- Welcome (tavern) ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.hero h2 {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  line-height: .95;
+}
+
+.hero h3 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
+.hero .lede {
+  max-width: 34ch;
+  margin: 0 0 22px;
+  font-size: 1.2rem;
+}
+
+.member-form { margin-bottom: 14px; }
+.member-form .field { flex: 1; min-width: 180px; }
+.member-form .btn { align-self: flex-end; }
+.enter-btn { margin-top: 8px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+}
+
+/* ---------- I. Oath ---------- */
+.oath-text {
+  position: relative;
+  margin: 0 0 20px;
+  padding: 22px 26px;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+}
+
+.oath-text::first-letter {
+  float: left;
+  margin: 6px 10px 0 0;
+  font-family: var(--display);
+  font-size: 3.4rem;
+  line-height: .85;
+  color: var(--gules);
+}
+
+.seals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sealbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 84px;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.sealbtn svg { width: 64px; height: 64px; }
+
+.sealbtn .nm {
+  font-size: .9rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.sealbtn.off svg .wax {
+  fill: transparent;
+  stroke: var(--ink-soft);
+  stroke-dasharray: 4 4;
+}
+
+.sealbtn.off svg .let { fill: var(--ink-soft); }
+.sealbtn.fresh svg { animation: stamp .35s ease-out; }
+
+.banner-ok {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  color: var(--vert);
+}
+
+/* ---------- II. Character classes ---------- */
+.deck {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 12px 12px;
+  background: var(--page-2);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pcard:hover { background: var(--page-3); }
+.pcard svg { width: 62px; height: 74px; }
+
+.pcard .n {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.pcard .d {
+  font-size: .88rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+.pcard .who {
+  min-height: 1.4em;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--who-accent);
+}
+
+@media (max-width: 600px) {
+  .deck { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- III. Traveller state ---------- */
+.states {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.state {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--page-2);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.state:hover { background: var(--page-3); }
+.state .hearts { display: flex; gap: 4px; }
+.state .hearts svg { width: 24px; height: 22px; }
+.state .t { font-weight: 700; }
+.state .d { font-size: .9rem; color: var(--ink-soft); }
+.state .who { font-size: .9rem; font-weight: 700; color: var(--gules); }
+
+/* ---------- IV. Quest map ---------- */
+.mapgrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #142A52;
+  border: 3px solid var(--line);
+  border-radius: 6px;
+}
+
+.map-hint { margin-top: 12px; }
+
+.zone { cursor: pointer; }
+.zone:focus { outline: none; }
+
+.zone .ring {
+  fill: none;
+  stroke: #C99A2E;
+  stroke-width: 4;
+  stroke-dasharray: 8 6;
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.zone:hover .ring,
+.zone:focus .ring { opacity: .55; }
+.zone.active .ring { opacity: 1; }
+
+.zone .lbl rect { fill: #EADFC4; stroke: #1B1713; stroke-width: 2; }
+
+.zone .lbl text {
+  font-family: var(--display);
+  font-size: 19px;
+  fill: #2A211A;
+  text-anchor: middle;
+}
+
+.zone.active .lbl rect { fill: #C99A2E; }
+.zone.active .lbl text { fill: var(--sable); }
+
+.cnt circle { fill: #9B2226; stroke: #1B1713; stroke-width: 2; }
+
+.cnt text {
+  font-family: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  fill: #F6EDD6;
+  text-anchor: middle;
+}
+
+.minizones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.zonepanel h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zonepanel .sw {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--zone-color);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+}
+
+.zonepanel .empty { margin-top: 16px; }
+
+.q {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.note-actions { margin-top: 8px; }
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px 8px 12px;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-left: 8px solid var(--zone-color);
+  border-radius: 4px;
+}
+
+.note .rm { font-size: 1.2rem; }
+
+@media (max-width: 900px) {
+  .mapgrid { grid-template-columns: 1fr; }
+}
+
+/* ---------- V. Gold coins and Oracle ---------- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.tab {
+  padding: 6px 16px;
+  background: var(--page-2);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.tab.on { background: var(--ink); color: var(--page); }
+
+.toggle { cursor: pointer; }
+
+.purse {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.purse svg { width: 28px; height: 28px; }
+
+.subj {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-left: 8px solid var(--zone-color);
+  border-radius: 4px;
+}
+
+.subj.top { background: var(--page-3); }
+
+.subj .tag {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--gules);
+}
+
+.coins {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coins .pile { display: flex; min-width: 40px; }
+.coins .pile svg { width: 22px; height: 22px; margin-left: -8px; }
+.coins .pile svg:first-child { margin-left: 0; }
+
+.coins .count {
+  min-width: 1.5ch;
+  text-align: center;
+}
+
+.cbtn {
+  width: 34px;
+  height: 34px;
+  background: var(--or);
+  color: var(--sable);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cbtn.minus { background: var(--page); }
+.cbtn[disabled] { opacity: .35; cursor: not-allowed; }
+
+.to-oracle { margin-top: 14px; }
+
+.oracle {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 22px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+
+.why-scroll { margin-bottom: 28px; }
+
+.problem {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.chain {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chain li {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chain li .k {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--why-accent);
+}
+
+.cause {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 2px solid var(--vert);
+  border-radius: 4px;
+}
+
+.cause label { color: var(--cause-accent); }
+
+@media (max-width: 600px) {
+  .oracle { grid-template-columns: 1fr; }
+  .oracle svg { width: 90px; }
+  .chain li { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ---------- VI. Scroll of oaths ---------- */
+.oathtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.oathtop .ttl {
+  font-family: var(--display);
+  font-size: 1.4rem;
+}
+
+.sealed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--gules);
+}
+
+.sealed svg { width: 40px; height: 40px; }
+
+.proof-field { margin-top: 12px; }
+
+.smart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 12px;
+  font-size: .95rem;
+}
+
+.smart label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* ---------- VII. King's verdict ---------- */
+.honour-btn { margin-top: 10px; }
+
+.honours {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.honours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+}
+
+.avg {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0 16px;
+}
+
+.avg .n {
+  font-family: var(--display);
+  font-size: 3.4rem;
+  line-height: 1;
+}
+
+.vrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--page-3);
+}
+
+.crowns { display: flex; gap: 2px; }
+
+.crown {
+  padding: 2px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.crown svg { width: 34px; height: 26px; }
+.crown .c { fill: transparent; stroke: var(--ink-soft); stroke-width: 2; }
+.crown.on .c { fill: var(--or); stroke: var(--line); }
+
+/* ---------- Chronicle ---------- */
+.chronicle {
+  max-height: 460px;
+  margin: 0 0 14px;
+  padding: 18px 20px;
+  overflow: auto;
+  white-space: pre-wrap;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  font-family: var(--text);
+  font-size: 1rem;
+}
+
+.fin {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.bigseal {
+  width: 110px;
+  height: 110px;
+  animation: stamp .5s ease-out;
+}

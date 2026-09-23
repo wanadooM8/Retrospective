@@ -1,0 +1,205 @@
+/* Reusable components: buttons, form fields, chips, callouts, lists. */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: var(--gules);
+  color: var(--on-gules);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 var(--line);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .06s;
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
+.btn.or { background: var(--or); color: var(--sable); }
+.btn.quiet { background: transparent; color: var(--ink); box-shadow: none; }
+
+.btn[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Small "×" button used to remove an item */
+.rm {
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--gules);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Form fields ---------- */
+input[type=text],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: .8;
+}
+
+label.f {
+  display: block;
+  margin: 0 0 4px;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.fields.single {
+  grid-template-columns: 1fr;
+  margin-top: 0;
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gules);
+}
+
+/* ---------- Chips ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.chip {
+  padding: 5px 14px;
+  background: var(--page-2);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chip.on { background: var(--azure); color: var(--argent); }
+.chip.set { border-style: dashed; }
+
+.chip .x {
+  margin-left: 8px;
+  color: var(--gules);
+  font-weight: 700;
+}
+
+/* ---------- Text blocks ---------- */
+.say {
+  margin: 0 0 18px;
+  padding: 4px 0 4px 16px;
+  border-left: 4px solid var(--gules);
+  font-style: italic;
+}
+
+.say b {
+  display: block;
+  margin-bottom: 2px;
+  font-size: .9rem;
+  font-style: normal;
+  color: var(--gules);
+}
+
+.hint {
+  color: var(--ink-soft);
+  font-size: .95rem;
+}
+
+.hint.flush { margin-top: 0; }
+
+ul.plain {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+ul.plain li { margin-bottom: 4px; }
+
+.empty {
+  padding: 18px;
+  border: 2px dashed var(--page-3);
+  border-radius: 6px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.warn {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--page-2);
+  border: 2px solid var(--gules);
+  border-radius: 6px;
+}
+
+.toast {
+  min-height: 1.5em;
+  color: var(--vert);
+  font-weight: 700;
+}
+
+/* Rolled parchment card */
+.scroll {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 18px 20px;
+  background: var(--page-2);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+}
+
+.scroll::before,
+.scroll::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  height: 12px;
+  background: var(--page-3);
+  border: 2px solid var(--line);
+  border-radius: 8px;
+}
+
+.scroll::before { top: -8px; }
+.scroll::after { bottom: -8px; }
+
+@media (max-width: 600px) {
+  .fields { grid-template-columns: 1fr; }
+}

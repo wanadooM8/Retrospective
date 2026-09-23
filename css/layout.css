@@ -1,0 +1,224 @@
+/* Page frame: header, timer, step path, parchment page and column grids. */
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 20px 48px;
+}
+
+/* ---------- Header ---------- */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1;
+  letter-spacing: .01em;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  color: var(--on-field-soft);
+  font-size: .95rem;
+}
+
+/* ---------- Timer ---------- */
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border: 2px solid rgba(239, 230, 207, .35);
+  border-radius: 8px;
+}
+
+.timer .t {
+  min-width: 4.2ch;
+  font-family: var(--display);
+  font-size: 2.1rem;
+  line-height: 1;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer.done { border-color: var(--or); }
+.timer.done .t { color: var(--or); }
+
+.tbtn {
+  padding: 4px 10px;
+  background: transparent;
+  border: 2px solid rgba(239, 230, 207, .5);
+  border-radius: 4px;
+  color: var(--on-field);
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.tbtn:hover { border-color: var(--or); }
+
+/* ---------- Step path ---------- */
+.path {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  margin: 22px 0 18px;
+  padding: 4px 2px 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.wp {
+  position: relative;
+  flex: 1 0 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--on-field-soft);
+  cursor: pointer;
+}
+
+.wp::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: -50%;
+  z-index: 0;
+  width: 100%;
+  border-top: 3px dotted rgba(239, 230, 207, .4);
+}
+
+.wp:first-child::before { display: none; }
+
+.wp .m {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--or);
+  border-radius: 50%;
+  background: var(--field);
+  color: var(--or);
+  font-family: var(--display);
+  font-size: 1.15rem;
+}
+
+.wp .l {
+  font-size: .85rem;
+  white-space: nowrap;
+}
+
+.wp.cur .m { background: var(--or); color: var(--sable); }
+.wp.cur .l { color: var(--on-field); font-weight: 700; }
+.wp:hover .l { color: var(--on-field); }
+
+/* ---------- Parchment page ---------- */
+.page {
+  padding: clamp(20px, 4vw, 44px);
+  background: var(--page);
+  color: var(--ink);
+  border: 3px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 8px 8px 0 var(--line);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--page-3);
+}
+
+.head .num {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  line-height: .8;
+  color: var(--gules);
+}
+
+.head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  line-height: 1.05;
+}
+
+.head .dur {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 2px solid var(--page-3);
+}
+
+/* ---------- Column grids ---------- */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.side p { margin: 0 0 12px; }
+
+.side h3,
+.main h3 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.55rem;
+}
+
+.small-foot {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--on-field-soft);
+  font-size: .9rem;
+}
+
+.small-foot button {
+  background: none;
+  border: 0;
+  color: var(--on-field-soft);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .cols { grid-template-columns: 1fr; gap: 26px; }
+}
+
+@media (max-width: 600px) {
+  .page { box-shadow: 4px 4px 0 var(--line); }
+  .brand h1 { font-size: 1.8rem; }
+}

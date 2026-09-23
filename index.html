@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Rétrospective de Sprint animée comme une quête médiévale.">
+  <title>La Quête de la Guilde</title>
+  <link rel="icon" href="data:,">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Pirata+One&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/steps.css">
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <svg width="44" height="54" viewBox="0 0 80 96" aria-hidden="true">
+          <path d="M6 6 H74 V44 C74 70 58 84 40 92 C22 84 6 70 6 44 Z" fill="#9B2226"/>
+          <path d="M6 6 H40 V92 C22 84 6 70 6 44 Z" fill="#C99A2E"/>
+          <path d="M6 6 H74 V44 C74 70 58 84 40 92 C22 84 6 70 6 44 Z" fill="none" stroke="#1B1713" stroke-width="4"/>
+          <path d="M40 6 V92" stroke="#1B1713" stroke-width="3"/>
+        </svg>
+        <div>
+          <h1>La Quête de la Guilde</h1>
+          <p>Rétrospective du Sprint 1</p>
+        </div>
+      </div>
+
+      <div class="timer" id="timer" aria-live="polite">
+        <svg id="timer-glass" width="30" height="46" viewBox="0 0 40 60" aria-hidden="true"></svg>
+        <span class="t" id="timer-value">0:00</span>
+        <button type="button" class="tbtn" data-act="timerToggle" id="timer-toggle">Lancer</button>
+        <button type="button" class="tbtn" data-act="timerReset">Remettre</button>
+      </div>
+    </header>
+
+    <nav class="path" id="path" aria-label="Étapes de la rétrospective"></nav>
+    <main class="page" id="page"></main>
+
+    <div class="small-foot">
+      Flèches gauche et droite du clavier pour changer d'étape.
+      <button type="button" data-act="reset">Recommencer une nouvelle quête</button>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="small-foot">Ce site a besoin de JavaScript pour fonctionner.</p>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Design tokens: heraldic palette, surfaces and fonts, light and dark themes. */
+
+:root {
+  /* Heraldic tinctures */
+  --azure: #1E3A6E;
+  --azure-deep: #142A52;
+  --gules: #9B2226;
+  --or: #C99A2E;
+  --or-deep: #8A6414;
+  --vert: #2E5E43;
+  --vert-deep: #20443A;
+  --purpure: #5B3A6B;
+  --sable: #1B1713;
+  --wood: #7A4B22;
+  --argent: #F3EEDF;
+
+  /* Surfaces */
+  --field: #1E3A6E;
+  --on-field: #EFE6CF;
+  --on-field-soft: #B9C3D8;
+  --page: #EADFC4;
+  --page-2: #DDCFAE;
+  --page-3: #CDBB94;
+  --ink: #2A211A;
+  --ink-soft: #5E4E3C;
+  --line: #1B1713;
+  --on-gules: #F6EDD6;
+
+  /* Accent text colours that need lightening in dark mode */
+  --who-accent: var(--azure);
+  --why-accent: var(--purpure);
+  --cause-accent: var(--vert);
+
+  /* Fonts */
+  --display: "Pirata One", "UnifrakturMaguntia", "Old English Text MT", Georgia, serif;
+  --text: "Alegreya", Georgia, "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --field: #0F1D38;
+    --on-field: #EFE6CF;
+    --on-field-soft: #9AA6BF;
+    --page: #2A241D;
+    --page-2: #352D24;
+    --page-3: #43392D;
+    --ink: #EDE3CB;
+    --ink-soft: #C2B195;
+    --line: #0A0806;
+    --azure: #3A5C9A;
+    --vert: #3F7A5A;
+    --purpure: #7A5590;
+    --gules: #B3332F;
+
+    --who-accent: #9DB7E8;
+    --why-accent: #C9A6DC;
+    --cause-accent: #86C7A0;
+  }
+}
+
+:root[data-theme="dark"] {
+  --field: #0F1D38;
+  --on-field: #EFE6CF;
+  --on-field-soft: #9AA6BF;
+  --page: #2A241D;
+  --page-2: #352D24;
+  --page-3: #43392D;
+  --ink: #EDE3CB;
+  --ink-soft: #C2B195;
+  --line: #0A0806;
+  --azure: #3A5C9A;
+  --vert: #3F7A5A;
+  --purpure: #7A5590;
+  --gules: #B3332F;
+}
